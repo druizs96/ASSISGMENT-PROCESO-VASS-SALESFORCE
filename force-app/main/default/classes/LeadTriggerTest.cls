@@ -8,7 +8,6 @@ public class LeadTriggerTest {
         insert l;
         Lead inserted = [SELECT Country__c FROM Lead WHERE Id = :l.Id];
         System.assertEquals(c.Id, inserted.Country__c);
-        // Update country
         l.Country = 'TestCountry';
         update l;
         Lead updated = [SELECT Country__c FROM Lead WHERE Id = :l.Id];

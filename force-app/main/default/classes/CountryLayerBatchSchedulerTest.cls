@@ -6,6 +6,5 @@ public class CountryLayerBatchSchedulerTest {
         String cron = '0 0 23 * * ?';
         System.schedule('Test CountryLayerBatchScheduler', cron, new CountryLayerBatchScheduler());
         Test.stopTest();
-        // Solo cobertura
     }
 }

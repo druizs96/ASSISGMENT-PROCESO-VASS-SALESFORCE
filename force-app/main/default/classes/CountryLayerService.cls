@@ -4,7 +4,6 @@ public with sharing class CountryLayerService {
 
     @InvocableMethod
     public static void callCountryLayerAPI() {
-       System.debug('Calling CountryLayer API...');
         String url = 'https://api.countrylayer.com/v2/all?access_key=' + COUNTRY_LAYER_API_KEY;
 
         HttpRequest req = new HttpRequest();
@@ -30,14 +29,12 @@ public with sharing class CountryLayerService {
     }
 
     public static void syncCountriesFromJson(String jsonResponse) {
-        // Parsear el JSON
         List<Object> rawCountries = (List<Object>) JSON.deserializeUntyped(jsonResponse);
         List<Map<String, Object>> countries = new List<Map<String, Object>>();
         for (Object o : rawCountries) {
             countries.add((Map<String, Object>) o);
         }
 
-        // Obtener todos los países existentes por Name
         Set<String> names = new Set<String>();
         for (Map<String, Object> c : countries) {
             names.add((String)c.get('name'));
